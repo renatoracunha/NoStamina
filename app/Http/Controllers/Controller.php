@@ -39,7 +39,13 @@ class Controller extends BaseController
 
     
     public function ajax_get_players(){
-        $users = DB::select('select id,nome,img from players where ativo = "T"');
+        $users = DB::select('   select 
+                                        players.id,
+                                        players.nome,
+                                        players.img,
+                                        (SELECT players_ratings.media_votos from players_ratings where players_ratings.player_votado = players.id and player_votador = 1 ) as has_been_rated 
+                                from players where ativo = "T"
+                            ');//torcar o id = 1 pela session quando tiver login
         echo json_encode($users,JSON_UNESCAPED_UNICODE);
     }
 
