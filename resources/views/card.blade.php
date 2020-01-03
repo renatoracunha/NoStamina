@@ -32,7 +32,7 @@
 				cache:false,
 				success:function(data){
 					
-					$('#Container').css({"background-image": "url("+data[0].img+")", "background-repeat": "no-repeat","background-size": "100% 50%"});
+					$('#Container').css({"background-image": "url(/imagens/profile_pictures/"+data[0].img+")", "background-repeat": "no-repeat","background-size": "100% 50%"});
 					$('#name').html(data[0].nome);
 					$('#goals').html(data[0].gols);
 					$('#assists').html(data[0].assistencias);

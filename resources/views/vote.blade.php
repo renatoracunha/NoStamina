@@ -27,8 +27,8 @@
 				value.img = "{{asset('imagens/profile_pictures')}}/"+value.img;
             
 				var lines = '';
-				lines+='<tr>';
-					lines+='<td>';
+				lines+='<tr style="border-spacing: 5em;" >';
+					lines+='<td onclick="goto_player_card('+value.id+')">';
 						lines+='<img style="max-width:100px;max-heigth:100px;" src="'+value.img+'")}}">';
 					lines+='</td>';
 					lines+='<td>';
@@ -98,6 +98,11 @@
 				}
 			})
 		}
+
+		function goto_player_card(player_id)
+		{
+			alert(player_id);
+		}
 	</script>
 
 	<style type="text/css">
@@ -159,7 +164,7 @@ body{
 	<div id=Container> <!-- Container to hold everything -->
         <table style="width:100%;" id="players_table">
             <thead>
-                <th>#</th>
+                <th>Ver profile</th>
                 <th>Nome</th>
                 <th>Nota</th>
             </thead>
