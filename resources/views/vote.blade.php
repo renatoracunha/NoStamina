@@ -101,7 +101,8 @@
 
 		function goto_player_card(player_id)
 		{
-			alert(player_id);
+			window.location.href = './card/'+player_id; 
+			
 		}
 	</script>
 

@@ -12,7 +12,7 @@
 */
 Route::get('/', 'Controller@teste')->name('profile');
 
-Route::get('/card', 'Controller@playerCard')->name('card');
+Route::get('/card/{player_id}', 'Controller@playerCard')->name('card');
 
 Route::get('/ajax_get_profile', 'Controller@ajax_player_profile')->name('ajax_get_profile');
 

@@ -19,7 +19,9 @@
 	<script type="text/javascript">
 		$(document).ready(function(){
 			loadPlayer($('#myList').val());
-			
+			if ("<?php echo $player_id?>">0) {
+				loadPlayer("<?php echo $player_id?>");
+			}
 		});
 		
 
@@ -205,7 +207,7 @@ body{
 
         <select id="myList" onchange="loadPlayer(this.value)"> <!-- Players option list -->
             @foreach ($players as $player)      
-                <option  value="{{$player->id}}">{{$player->nome}}</option>
+                <option @if ($player_id==$player->id) selected  @endif value="{{$player->id}}">{{$player->nome}}</option>
             @endforeach
 		</select> 
 

@@ -7,6 +7,7 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Collection;
+use Illuminate\Http\Request ;
 use Illuminate\Routing\Controller as BaseController;
 
 class Controller extends BaseController
@@ -19,10 +20,19 @@ class Controller extends BaseController
        exit;
     }
     
-    public function playerCard(){
+    public function playerCard(Request $request){
         $data['players'] = DB::select('select nome,id from players where ativo ="T"');
+        if(!empty($request))
+        {
+            $data['player_id']= $request->player_id ;
+           // print_r($data);exit;
+        }
+        else
+        {
+            $data['player_id']=0;
+        }
         
-        //print_r($data);exit;
+        
         return view('card', $data);
         /*//$users =  DB::table('players')->where('ativo', 'T');
        
