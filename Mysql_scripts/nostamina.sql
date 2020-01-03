@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 03-Jan-2020 às 18:08
+-- Tempo de geração: 03-Jan-2020 às 20:20
 -- Versão do servidor: 10.3.16-MariaDB
 -- versão do PHP: 7.3.8
 
@@ -56,7 +56,8 @@ CREATE TABLE `players` (
 
 INSERT INTO `players` (`id`, `nome`, `idade`, `mensal`, `saldo`, `partidas`, `vitorias`, `derrotas`, `empates`, `minutos`, `gols`, `assistencias`, `mvp`, `seloGuita`, `ativo`, `telefone`, `login`, `senha`, `img`) VALUES
 (1, 'Renato Cunha', 28, 'T', 40, 322, 150, 150, 22, 30000, 57, 21, 8, 3, 'T', 997474813, 'renatoracunha', '123', 'profile1.jpg'),
-(2, 'Eduardo Cunha', 23, 'T', 40, 300, 15, 15, 220, 30000, 570, 210, 80, 3, 'T', 997474813, 'eduracunha', '123', 'profile2.jpg');
+(2, 'Eduardo Cunha', 23, 'T', 40, 300, 15, 15, 220, 30000, 570, 210, 80, 3, 'T', 997474813, 'eduracunha', '123', 'profile2.jpg'),
+(3, 'player teste', 23, 'T', 40, 300, 15, 15, 220, 30000, 570, 210, 80, 3, 'T', 997474813, 'eduracunha', '123', 'profile2.jpg');
 
 -- --------------------------------------------------------
 
@@ -68,7 +69,6 @@ CREATE TABLE `players_ratings` (
   `id` int(11) NOT NULL,
   `player_votador` int(11) NOT NULL,
   `player_votado` int(11) NOT NULL,
-  `media_votos` double NOT NULL,
   `shooting` int(1) NOT NULL,
   `pass` int(1) NOT NULL,
   `defence` int(1) NOT NULL,
@@ -80,9 +80,9 @@ CREATE TABLE `players_ratings` (
 -- Extraindo dados da tabela `players_ratings`
 --
 
-INSERT INTO `players_ratings` (`id`, `player_votador`, `player_votado`, `media_votos`, `shooting`, `pass`, `defence`, `stamina`, `speed`) VALUES
-(1, 2, 1, 4, 4, 5, 5, 3, 3),
-(2, 1, 2, 3.8, 3, 3, 5, 5, 3);
+INSERT INTO `players_ratings` (`id`, `player_votador`, `player_votado`, `shooting`, `pass`, `defence`, `stamina`, `speed`) VALUES
+(1, 2, 1, 4, 5, 5, 3, 3),
+(2, 1, 2, 4, 4, 4, 5, 3);
 
 --
 -- Índices para tabelas despejadas
@@ -108,13 +108,13 @@ ALTER TABLE `players_ratings`
 -- AUTO_INCREMENT de tabela `players`
 --
 ALTER TABLE `players`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `players_ratings`
 --
 ALTER TABLE `players_ratings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

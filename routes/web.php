@@ -22,6 +22,8 @@ Route::get('/vote', function () {
 
 Route::get('/ajax_get_players', 'Controller@ajax_get_players')->name('ajax_get_players');
 
+Route::get('/ajax_rate_player', 'Controller@ajax_rate_player')->name('ajax_rate_player');
+
 /*Route::get('/', function () {
     
     //return view('welcome');

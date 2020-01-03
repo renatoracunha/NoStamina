@@ -22,37 +22,40 @@
 		});
         
         function loadDataInApp(value){
-            value.img = "{{asset('imagens/profile_pictures')}}/"+value.img;
+			if(value.id!=1)//trocar para a session ID
+			{
+				value.img = "{{asset('imagens/profile_pictures')}}/"+value.img;
             
-            var lines = '';
-            lines+='<tr>';
-                lines+='<td>';
-                    lines+='<img style="max-width:100px;max-heigth:100px;" src="'+value.img+'")}}">';
-                lines+='</td>';
-                lines+='<td>';
-                    lines+=value.nome;
-                lines+='</td>';
-				if(!value.has_been_rated)
-				{
+				var lines = '';
+				lines+='<tr>';
 					lines+='<td>';
-						lines+='<select onchange="set_rating(this.value)">';
-							lines+='<option value="1">1</option>';
-							lines+='<option value="2">2</option>';
-							lines+='<option value="3">3</option>';
-							lines+='<option value="4">4</option>';
-							lines+='<option value="5">5</option>';
-						lines+='</select>';
+						lines+='<img style="max-width:100px;max-heigth:100px;" src="'+value.img+'")}}">';
 					lines+='</td>';
-				}
-				else
-				{
 					lines+='<td>';
-					lines+=value.has_been_rated;
+						lines+=value.nome;
 					lines+='</td>';
-				}
-            lines+='</tr>'; 
-            
-            return lines;
+					if(!value.has_been_rated)
+					{
+						lines+='<td>';
+							lines+='<select onchange="set_rating(this.value,'+value.id+')">';
+								lines+='<option value="1">1</option>';
+								lines+='<option value="2">2</option>';
+								lines+='<option value="3">3</option>';
+								lines+='<option value="4">4</option>';
+								lines+='<option value="5">5</option>';
+							lines+='</select>';
+						lines+='</td>';
+					}
+					else
+					{
+						lines+='<td>';
+						lines+=parseInt(value.has_been_rated);
+						lines+='</td>';
+					}
+				lines+='</tr>'; 
+				
+				return lines;
+			}
         }
 
 		function loadPlayers(){
@@ -80,24 +83,16 @@
 				}
 			})
 		}
-		function set_rating(rating){
+		function set_rating(rating,voted_player){
+			let voting_player = 1;//temporario enquanto n tem a session
 			$.ajax({
-				url: "{{ route('ajax_get_players') }}",
+				url: "{{ route('ajax_rate_player') }}",
 				dataType:"json",
+				data: {rating:rating,voting_player:voting_player,voted_player:voted_player },
 				type:"get",
 				cache:false,
 				success:function(data){
-                    var lines = '';
-                    $.each(data,function(index,value){
-                        lines+= loadDataInApp(value);
-                    });
-                    
-                    if (lines) {
-                        $("#players_table tbody").html('');
-                        $("#players_table tbody").append(lines);
-                    }else{
-                        alert('não há jogadores cadastrados');
-                    }
+                   loadPlayers();
 				},error:function(e){
 					alert('erro');
 				}

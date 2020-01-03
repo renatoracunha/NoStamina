@@ -39,15 +39,31 @@ class Controller extends BaseController
 
     
     public function ajax_get_players(){
-        $users = DB::select('   select 
+        $users = DB::select('  select 
                                         players.id,
                                         players.nome,
                                         players.img,
-                                        (SELECT players_ratings.media_votos from players_ratings where players_ratings.player_votado = players.id and player_votador = 1 ) as has_been_rated 
+                                        ( SELECT (shooting+speed+pass+defence+stamina)/5 from players_ratings where players_ratings.player_votado = players.id and player_votador = 1 ) as has_been_rated 
                                 from players where ativo = "T"
                             ');//torcar o id = 1 pela session quando tiver login
         echo json_encode($users,JSON_UNESCAPED_UNICODE);
     }
+
+
+    
+    public function ajax_rate_player(){
+        $shooting = $_GET['rating'];
+        $speed = $_GET['rating'];
+        $pass = $_GET['rating'];
+        $defence = $_GET['rating'];
+        $stamina = $_GET['rating'];
+        $voting_player = $_GET['voting_player'];
+        $voted_player = $_GET['voted_player'];
+        DB::insert('insert into players_ratings (player_votador, player_votado, shooting, pass, defence, stamina, speed) 
+                                                values (?, ?,?,?,?,?,?)', [$voting_player, $voted_player ,$shooting,$pass,$defence,$stamina,$speed]);
+        echo json_encode($voted_player,JSON_UNESCAPED_UNICODE);
+    }
+
 
 
 }
