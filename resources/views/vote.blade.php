@@ -8,7 +8,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 	<!-- Bootstrap CSS -->
-	<link rel="stylesheet" href="{{ asset('css/bootstrap.css')}} ?>">
+	<link rel="stylesheet" href="{{ asset('css/bootstrap.css')}}">
+	<link rel="stylesheet" href="{{ asset('css/app_styles.css')}}">
 	<!-- JavaScript (Opcional) -->
 	<!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
 	<script src="{{ asset('js/jquery.js') }}" type="text/javascript"></script>
@@ -60,7 +61,7 @@
 
 		function loadPlayers(){
             $('#players_table tbody').html('');
-            $('#players_table tbody').append('<td colspan="3">================LOADING=================</td>');
+            $('#players_table tbody').append('<td colspan="3"><center><div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></center></td>');
 			$.ajax({
 				url: "{{ route('ajax_get_players') }}",
 				dataType:"json",
@@ -108,53 +109,16 @@
 
 	<style type="text/css">
 
-		/* HTML5 display-role reset for older browsers */
-		article, aside, details, figcaption, figure, 
-		footer, header, hgroup, menu, nav, section {
-			display: block;
-		}
-		body {
-			line-height: 1;
-		}
-		ol, ul {
-			list-style: none;
-		}
-		blockquote, q {
-			quotes: none;
-		} 
-		blockquote:before, blockquote:after,
-		q:before, q:after {
-			content: '';
-			content: none;
-		}
-		table {
-			border-collapse: collapse;
-			border-spacing: 0;
-		}
-
-		/*-----------------------------------------------*/
-/* CSS RESET SHEET TO FACILIATE CROSS BROWSER COMPATIBILITY
-/*-----------------------------------------------*/
 
 body{
 	/* Apply univerasl font to the body and a BG colour */
 	font-family:arial;
     color:ivory;
-	background-color: black;
 
 }
 
 
-#Container{
-	position:relative; /*position the container relative so its child elements can have absolute positioning */
-	/*Specifiy dimensions of the app */
-	
-	width:100%;
-    max-width: 500px;
-	top:20px;
-	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23); /*apply showdow with RGBA values to the whole app */
-	margin: 0 auto; /*center entire app */ 
-}
+
 
 
 
@@ -170,7 +134,7 @@ body{
                 <th>Nota</th>
             </thead>
             <tbody>
-              <td colspan="3">================LOADING=================</td>
+              <td colspan="3"><center><div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></center></td>
             </tbody>
         </table>
       

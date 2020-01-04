@@ -1,0 +1,244 @@
+
+/*loading*/
+.lds-roller {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+  }
+  .lds-roller div {
+    animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    transform-origin: 40px 40px;
+  }
+  .lds-roller div:after {
+    content: " ";
+    display: block;
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #fcf;
+    margin: -4px 0 0 -4px;
+  }
+  .lds-roller div:nth-child(1) {
+    animation-delay: -0.036s;
+  }
+  .lds-roller div:nth-child(1):after {
+    top: 63px;
+    left: 63px;
+  }
+  .lds-roller div:nth-child(2) {
+    animation-delay: -0.072s;
+  }
+  .lds-roller div:nth-child(2):after {
+    top: 68px;
+    left: 56px;
+  }
+  .lds-roller div:nth-child(3) {
+    animation-delay: -0.108s;
+  }
+  .lds-roller div:nth-child(3):after {
+    top: 71px;
+    left: 48px;
+  }
+  .lds-roller div:nth-child(4) {
+    animation-delay: -0.144s;
+  }
+  .lds-roller div:nth-child(4):after {
+    top: 72px;
+    left: 40px;
+  }
+  .lds-roller div:nth-child(5) {
+    animation-delay: -0.18s;
+  }
+  .lds-roller div:nth-child(5):after {
+    top: 71px;
+    left: 32px;
+  }
+  .lds-roller div:nth-child(6) {
+    animation-delay: -0.216s;
+  }
+  .lds-roller div:nth-child(6):after {
+    top: 68px;
+    left: 24px;
+  }
+  .lds-roller div:nth-child(7) {
+    animation-delay: -0.252s;
+  }
+  .lds-roller div:nth-child(7):after {
+    top: 63px;
+    left: 17px;
+  }
+  .lds-roller div:nth-child(8) {
+    animation-delay: -0.288s;
+  }
+  .lds-roller div:nth-child(8):after {
+    top: 56px;
+    left: 12px;
+  }
+  @keyframes lds-roller {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+
+  
+  /*skill bar bola*/
+  #outer {
+    position: flex;
+    width: 100px;
+    height: 20px;
+    
+    }
+
+    #inner {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-image: url('../imagens/bola.png');
+    background-repeat: repeat;  
+    z-index: 5;
+    }
+
+    #overlay {
+    position: absolute;
+    right: 0.1px;
+    top: 0;
+    bottom: -2px;
+    background-color: rgba(234, 234, 234, 1);
+    z-index: 10;
+    }
+    /*skill bar bola fim*/
+
+    
+    /* HTML5 display-role reset for older browsers */
+    article, aside, details, figcaption, figure, 
+    footer, header, hgroup, menu, nav, section {
+        display: block;
+    }
+    body {
+        line-height: 1;
+    }
+    ol, ul {
+        list-style: none;
+    }
+    blockquote, q {
+        quotes: none;
+    } 
+    blockquote:before, blockquote:after,
+    q:before, q:after {
+        content: '';
+        content: none;
+    }
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
+
+    /*-----------------------------------------------*/
+/* CSS RESET SHEET TO FACILIATE CROSS BROWSER COMPATIBILITY
+/*-----------------------------------------------*/
+
+body{
+/* Apply univerasl font to the body and a BG colour */
+font-family:arial;
+background-color: black;
+
+}
+
+
+#Container{
+position:relative; /*position the container relative so its child elements can have absolute positioning */
+/*Specifiy dimensions of the app */
+height:700px;
+width:100%;
+max-width: 500px;
+top:20px;
+box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23); /*apply showdow with RGBA values to the whole app */
+margin: 0 auto; /*center entire app */ 
+}
+
+
+#myList {
+position:absolute;
+top:12px;
+height:7%;
+width: 90%;
+left: 0;  right: 0; /*player dropdown list is centered*/
+margin: auto; /*player dropdown list is centered*/
+background-color:rgba(234, 234, 234, 1);  
+}
+
+/*------*/
+/* BADGE 
+/*------*/
+.Badge{
+position:absolute;
+width:70px;
+height:70px;
+right:13px;
+top:43%;
+background-image:  url(https://upload.wikimedia.org/wikipedia/pt/thumb/b/bb/Ibis_Sport_Club.svg/1200px-Ibis_Sport_Club.svg.png);
+background-repeat: no-repeat;
+background-size: 100% 100% ;
+border-radius:50px;
+}
+
+
+
+/*------*/
+/* BADGE 
+/*------*/
+
+
+/*dimenstions and positioning for the players info and stats section at the bottom */
+#bottomSection{
+position:absolute;
+top:50%;
+width:100%; /*100% of containers width*/ 
+height:50%; /*50% of containers height*/ 
+z-index:-1000 !important;
+background-color:rgba(236, 0, 79, 1);
+
+}
+
+/*Style players name and position text */
+.name_position{
+position:absolute;
+left: 10px; 
+top:15px;
+color:rgba(251, 219, 227, 1);
+
+}
+
+/*Style just players merbership status text */
+#member{
+top:40px;
+font-size:12px;
+}
+
+/*Style the players data */
+.box{
+position:absolute;
+padding:9px;
+left: 10px;  right: 10px;
+margin-top:15%;
+background-color:rgba(234, 234, 234, 1);
+color:rgba(92, 57, 96, 1);  
+font-size:12px;
+}
+
+/*Style the players data on right side of the app */ 
+.data{
+position:absolute;
+right:4%;
+top:10px;
+font-weight:bold;
+color:rgba(57, 0, 61, 1);
+}

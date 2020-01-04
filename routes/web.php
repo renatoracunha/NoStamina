@@ -20,11 +20,19 @@ Route::get('/vote', function () {
     return view('vote');
 });
 
+Route::get('/register', function () {
+    return view('register');
+});
+
+Route::get('/ajax_register_player', 'Controller@ajax_register_player')->name('ajax_register_player');
+
+//Route::post('/upload_imagem', 'Controller@upload_imagem')->name('upload_imagem');
+
 Route::get('/ajax_get_players', 'Controller@ajax_get_players')->name('ajax_get_players');
 
 Route::get('/ajax_rate_player', 'Controller@ajax_rate_player')->name('ajax_rate_player');
 
-/*Route::get('/', function () {
-    
+Route::post('/upload_imagem', function (Request $request) {
+    print_r($request);exit;
     //return view('welcome');
-});*/
+})->name('upload_imagem');

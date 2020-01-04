@@ -34,16 +34,15 @@ class Controller extends BaseController
         
         
         return view('card', $data);
-        /*//$users =  DB::table('players')->where('ativo', 'T');
        
-       // echo '<pre>'; print_r($users); echo '</pre>';
-       exit;*/
     }
 
     
     public function ajax_player_profile(){
         $player_id = $_GET['player_id'];
-        $user = DB::select('select * from players where id ='.$player_id);
+        $user = DB::select('select players.id, players.nome,players.mvp,players.assistencias,players.mensal,players.img,players.partidas,players.gols,
+                                    (select (AVG(speed)+AVG(stamina)+AVG(defence)+AVG(pass)+AVG(shooting))/5 from players_ratings where player_votado = '.$player_id.') as media_votos 
+                                from players where id ='.$player_id);
         echo json_encode($user,JSON_UNESCAPED_UNICODE);
     }
 
@@ -73,6 +72,27 @@ class Controller extends BaseController
                                                 values (?, ?,?,?,?,?,?)', [$voting_player, $voted_player ,$shooting,$pass,$defence,$stamina,$speed]);
         echo json_encode($voted_player,JSON_UNESCAPED_UNICODE);
     }
+    
+    public function ajax_register_player(){
+        $nome = $_GET['nome'];
+        $senha = $_GET['senha'];
+        $img = $_GET['imagem'];
+        $login = $_GET['nome'];
+
+        $id =1; /*DB::table('players')->insertGetId(
+            ['nome' => $nome, 'senha' => $senha, 'img' => $img, 'login' => $login]
+        );*/
+        /*DB::insert('insert into players (nome, senha, img, login) 
+                                                values (?, ?,?,?)', [$nome, $senha ,$img,$login]);*/
+        echo json_encode($id,JSON_UNESCAPED_UNICODE);
+    }
+
+    public function upload_imagem(Request $request){
+		$request->imagem_player->storeAs('users','teste');
+		return view('welcome');
+		//$this->shopperz_model->set_img_path($filename);
+		//$this->load->view('empresa_overview.php');
+	}
 
 
 
