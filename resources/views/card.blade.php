@@ -78,16 +78,16 @@
 			</header>
 
 			<br>
+			<div style="background-image:{{asset('imagens/campo.png')}};">
+				<span class="box"><span><p>Partidas Jogadas</p></span> <span id="appearances" class="data"></span> </span> 
 
-			<span class="box"><span><p>Partidas Jogadas</p></span> <span id="appearances" class="data"></span> </span> 
-
-			<br><br>
-			<!-- data elements -->
-			<span class="box"><span><p>Gols Marcados</p></span> <span id="goals" class="data"> <p> </p></span></span> <br><br>
-			<span class="box"><span><p>Assistências</p></span> <span id="assists" class="data"><p>  </p></span></span> <br><br>
-			<span class="box"><span><p>Nota</p></span> <span id="overall" class="data"><p>  </p></span></span><br> <br>
-			<span class="box"><span><p>MVP's</p></span> <span id="mvp" class="data"><p></p> </span> </span>
-
+				<br><br>
+				<!-- data elements -->
+				<span class="box"><span><p>Gols Marcados</p></span> <span id="goals" class="data"> <p> </p></span></span> <br><br>
+				<span class="box"><span><p>Assistências</p></span> <span id="assists" class="data"><p>  </p></span></span> <br><br>
+				<span class="box"><span><p>Nota</p></span> <span id="overall" class="data"><p>  </p></span></span><br> <br>
+				<span class="box"><span><p>MVP's</p></span> <span id="mvp" class="data"><p></p> </span> </span>
+			</div>
 
 		</section>
 
