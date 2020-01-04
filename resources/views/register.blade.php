@@ -60,9 +60,10 @@
 						<input class="input100" type="password" id="confirmar_senha" placeholder="Confirmar senha">
 						<span class="focus-input100"></span>
                     </div>
-                    <form method="post" action="{{ route('upload_imagem') }}" id="upload_file" enctype="multipart/form-data">
+                    <form method="POST" action="./upload_imagem" id="upload_file" enctype="multipart/form-data">
 						<div class="wrap-input100 validate-input m-b-16" data-validate = "Upload de foto do perfil">
                             <input style="bottom:-5px" class="input100" type="file" name="imagem_player" id="imagem" >
+                            <input type="hidden" id="player_id" name="player_id" value='0'>
                             <span class="focus-input100"></span>
                         </div>
 					</form>
@@ -102,7 +103,7 @@
 <!--===============================================================================================-->
 <script>
     function register() {
-        document.getElementById("upload_file").submit();
+       // document.getElementById("upload_file").submit();
         let nome = $('#nome').val();
         let senha = $('#senha').val();
         let confirmar_senha = $('#confirmar_senha').val();
@@ -148,9 +149,11 @@
             type:"get",
             cache:false,
             success:function(data){
+                $('#player_id').val(data);
+
                 document.getElementById("upload_file").submit();
-                console.log(data);
-                // window.location.href = './card/'+data;
+                //console.log(data);
+                //window.location.href = './card/'+data;
             },error:function(e){
                 alert('erro');
             }

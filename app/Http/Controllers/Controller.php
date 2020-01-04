@@ -79,19 +79,23 @@ class Controller extends BaseController
         $img = $_GET['imagem'];
         $login = $_GET['nome'];
 
-        $id =1; /*DB::table('players')->insertGetId(
+        $id =DB::table('players')->insertGetId(
             ['nome' => $nome, 'senha' => $senha, 'img' => $img, 'login' => $login]
-        );*/
+        );
         /*DB::insert('insert into players (nome, senha, img, login) 
                                                 values (?, ?,?,?)', [$nome, $senha ,$img,$login]);*/
         echo json_encode($id,JSON_UNESCAPED_UNICODE);
     }
 
     public function upload_imagem(Request $request){
-		$request->imagem_player->storeAs('users','teste');
-		return view('welcome');
-		//$this->shopperz_model->set_img_path($filename);
-		//$this->load->view('empresa_overview.php');
+        $file_name = $request->player_id.'.'.$request->imagem_player->extension();
+       // print_r();exit;
+        $request->imagem_player->storeAs('profile_pictures',$file_name);
+        DB::table('players')
+            ->where('id', $request->player_id)
+            ->update(['img' => $file_name]);
+        return redirect('card/'.$request->player_id);
+       
 	}
 
 
